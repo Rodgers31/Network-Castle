@@ -12,7 +12,7 @@
     "down": "knex migrate:down",
     "latest": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "seed": "npx knex seed:run"
   },
   "keywords": [],
   "author": "",
