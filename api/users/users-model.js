@@ -24,7 +24,7 @@ async function insertUser(user) {
 
 function getAllUsers(filter) {
   return db('users')
-    .select('id', 'user_name', 'name', 'email', 'passowrd', 'admin')
+    .select('id', 'user_name', 'name', 'email', 'password', 'admin')
     .where(filter);
 }
 
@@ -37,13 +37,12 @@ function findBy(filter) {
 }
 
 function findById(id) {
-  return db('users').where('id', id).first();
+  return db('users').select('id', 'user_name').where('id', id).first();
 }
 
 async function add(user) {
-  return 'users'.insert(user, 'id').then(([id]) => {
-    findById(id);
-  });
+  const [id] = await db('users').insert(user);
+  return findById(id);
 }
 
 async function update(id, newInfo) {

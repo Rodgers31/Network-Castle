@@ -19,7 +19,7 @@ const checkCredetials = (req, res, next) => {
 
 const checkUserNameExist = async (req, res, next) => {
   try {
-    const user = await getAllUsers({ user_name: req.body.user_name });
+    const [user] = await getAllUsers({ user_name: req.body.user_name });
     if (user) {
       next({ message: 'username taken' });
     } else {
@@ -31,7 +31,7 @@ const checkUserNameExist = async (req, res, next) => {
 };
 const checkUserNameInDbExist = async (req, res, next) => {
   try {
-    const user = await getAllUsers({ user_name: req.body.user_name });
+    const [user] = await getAllUsers({ user_name: req.body.user_name });
     if (!user) {
       next({ meesage: 'invalid credentials' });
     } else {
