@@ -15,7 +15,17 @@ module.exports = {
     },
   },
   production: {
-    // etc
+    client: 'sqlite3',
+    connection: {
+      filename: './api/data/networkcastle.db3',
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './api/data/migrations',
+    },
+    seeds: {
+      directory: './api/data/seeds',
+    },
   },
   testing: {
     // etc
