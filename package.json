@@ -7,13 +7,13 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client_side && npm i && npm run build",
     "migrate": "knex migrate:make",
     "up": "knex migrate:up",
     "down": "knex migrate:down",
     "latest": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "heroku-postbuild": "cd client_side && npm i && npm run build"
   },
   "keywords": [],
   "author": "",
