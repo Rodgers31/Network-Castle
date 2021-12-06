@@ -13,7 +13,7 @@ server.use(
     secret: process.env.SECREATE, //put this in an environment, not sessios
     cookie: {
       maxAge: 1 * 24 * 60 * 60 * 1000,
-      secure: false, // in production, it should be true. https!!!
+      secure: true, // in production, it should be true. https!!!
     },
     httpOnly: true, // don't let JS acces cookies. Browser extensions
     resave: false,
