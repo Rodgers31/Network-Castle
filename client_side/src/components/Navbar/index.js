@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
+import Logoimg from '../../images/LayersExs.png';
 import {
   Nav,
   NavbarContainer,
@@ -17,7 +18,13 @@ const Navbar = () => {
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/'>Logo</NavLogo>
+          <NavLogo to='/'>
+            <img
+              style={{ marginTop: '20%', fontSize: '10rem' }}
+              src={Logoimg}
+              alt=''
+            />
+          </NavLogo>
           <MobileIcon>
             <FaBars />
           </MobileIcon>
@@ -26,7 +33,7 @@ const Navbar = () => {
               <NavLinks to='about'>About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to='discovere'>Discover</NavLinks>
+              <NavLinks to='discover'>Discover</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to='services'>Our Plans</NavLinks>
