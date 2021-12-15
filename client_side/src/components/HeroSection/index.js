@@ -32,7 +32,13 @@ const HeroSection = () => {
           advertisement. We've got you covered.
         </HeroP>
         <HeroBtnWrapper>
-          <Button to='signup' onMouseEnter={onHover} onMouseleave={onHover}>
+          <Button
+            to='signup'
+            onMouseEnter={onHover}
+            onMouseleave={onHover}
+            primary='true'
+            dark='true'
+          >
             Get started {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>
