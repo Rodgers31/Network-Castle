@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import Logoimg from '../../images/LayersExs.png';
+import Logoimg from '../../logoImg/LayersExs.png';
+
 import {
   Nav,
   NavbarContainer,
