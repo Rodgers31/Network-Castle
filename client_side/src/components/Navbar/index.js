@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
-import Logoimg from '../../logoImg/LayersExs.png';
+import Logoimg from '../../logoImg/Layers.png';
 // Can be used to add color to the icons so it's uniform accross different pages
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
@@ -40,7 +40,7 @@ const Navbar = ({ toggle }) => {
           <NavbarContainer>
             <NavLogo to='/' onClick={toggleHome}>
               <img
-                style={{ marginTop: '20%', fontSize: '10rem' }}
+                style={{ marginTop: '30%', padding: '10px', height: '200px' }}
                 src={Logoimg}
                 alt=''
               />

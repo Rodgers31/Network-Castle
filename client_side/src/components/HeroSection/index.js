@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Video from '../../video/video.mp4';
+import logo from '../../logoImg/LayersLogo.png';
 import { Button } from '../ButtonElements';
 import {
   HeroContainer,
