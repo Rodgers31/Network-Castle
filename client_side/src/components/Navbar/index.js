@@ -40,7 +40,11 @@ const Navbar = ({ toggle }) => {
           <NavbarContainer>
             <NavLogo to='/' onClick={toggleHome}>
               <img
-                style={{ marginTop: '30%', padding: '10px', height: '200px' }}
+                style={{
+                  marginTop: '30%',
+                  padding: '10px',
+                  height: '200px',
+                }}
                 src={Logoimg}
                 alt=''
               />
