@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Logoimg from '../../logoImg/LayersExs.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import { login } from '../../redux/actions/auth';
+
 import {
   Container,
   FormWrap,
@@ -12,25 +16,35 @@ import {
   FormButton,
   Text,
 } from './SigninElements';
+import { Navigate } from 'react-router-dom';
 
-const SignIn = () => {
-  const [email, setEmail] = useState('');
+const SignIn = (props) => {
+  const [user_name, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [people, setPeople] = useState([]);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email && password) {
-      const person = { email, password };
-      setPeople((people) => {
-        return [...people, person];
-      });
-      setEmail('');
-      setPassword('');
+    if (user_name && password) {
+      dispatch(login(user_name, password))
+        .then(() => {
+          props.history.push('/profile');
+          window.location.reload();
+        })
+        .catch(() => {
+          setLoading(false);
+        });
     } else {
       throw new Error('All fields must be entered');
     }
   };
+  if (isLoggedIn) {
+    return <Navigate to='/profile' />;
+  }
   return (
     <>
       <Container>
@@ -47,10 +61,10 @@ const SignIn = () => {
               <FormH1>Sign in to your account</FormH1>
               <FormLabel htmlFor='for'>Email</FormLabel>
               <FormInput
-                type='email'
-                id='email'
-                name='email'
-                value={email}
+                type='text'
+                id='user_name'
+                name='user_name'
+                value={user_name}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
