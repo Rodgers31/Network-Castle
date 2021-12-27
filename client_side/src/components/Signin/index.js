@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logoimg from '../../logoImg/LayersExs.png';
+import Logoimg from '../../logoImg/Layers.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import { login } from '../../redux/actions/auth';

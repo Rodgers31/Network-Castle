@@ -4,7 +4,8 @@ import Logoimg from '../../logoImg/Layers.png';
 // Can be used to add color to the icons so it's uniform accross different pages
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
-
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import {
   Nav,
   NavbarContainer,
@@ -19,6 +20,7 @@ import {
 
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
@@ -26,6 +28,11 @@ const Navbar = ({ toggle }) => {
     } else {
       setScrollNav(false);
     }
+  };
+
+  const logOut = () => {
+    localStorage.removeItem('user');
+    return <Navigate to='/' />;
   };
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
@@ -91,7 +98,9 @@ const Navbar = ({ toggle }) => {
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to='/login'>Login</NavBtnLink>
+              <NavBtnLink to='/login' onClick={logOut()}>
+                {isLoggedIn ? 'Logout' : 'Login'}
+              </NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

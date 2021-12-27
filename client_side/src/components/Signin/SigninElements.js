@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  min-height: 692px;
+  min-height: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -10,12 +10,16 @@ export const Container = styled.div`
   top: 0;
   z-index: 0;
   overflow: hidden;
-  background: white;
+  background: linear-gradient(
+    135deg,
+    hsla(240, 3%, 6%, 1) 19%,
+    hsla(181, 100%, 76%, 1) 90%
+  );
   margin-bottom: 5%;
 `;
 
 export const FormWrap = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,6 +97,7 @@ export const FormButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
+  color: black;
 `;
 
 export const Text = styled.span`
