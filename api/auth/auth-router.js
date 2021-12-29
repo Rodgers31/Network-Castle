@@ -10,15 +10,15 @@ const {
 
 router.post(
   '/register',
-  checkCredetials,
+  // checkCredetials,
   checkUserNameExist,
-  (req, res, next) => {
+  async (req, res, next) => {
     const { user_name, name, email, password, admin } = req.body;
-    const hash = bcrypt.hashSync(password, 12);
+    const hash = await bcrypt.hashSync(password, 12);
     Users.insertUser({ user_name, name, email, password: hash, admin })
       .then((newUser) => {
         res
-          .status(200)
+          .status(201)
           .json({ message: `${user_name} account has been created` });
       })
       .catch(next);

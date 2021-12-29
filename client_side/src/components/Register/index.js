@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logoimg from '../../logoImg/Layers.png';
 import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../redux/actions/auth';
 import { login } from '../../redux/actions/auth';
 
 import {
@@ -14,14 +15,16 @@ import {
   FormInput,
   FormButton,
   Text,
-} from './SigninElements';
+} from '../Signin/SigninElements.js';
 import { Navigate } from 'react-router-dom';
 
-const SignIn = (props) => {
+const Register = (props) => {
   const [user_name, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [people, setPeople] = useState([]);
+
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -29,10 +32,16 @@ const SignIn = (props) => {
     e.preventDefault();
 
     if (user_name && password) {
-      dispatch(login(user_name, password))
+      dispatch(register(user_name, name, email, password))
         .then(() => {
-          props.history.push('/profile');
-          window.location.reload();
+          dispatch(login(user_name, password))
+            .then(() => {
+              props.history.push('/profile');
+              window.location.reload();
+            })
+            .catch(() => {
+              setLoading(false);
+            });
         })
         .catch(() => {
           setLoading(false);
@@ -41,8 +50,15 @@ const SignIn = (props) => {
       throw new Error('All fields must be entered');
     }
   };
-  if (isLoggedIn) {
-    return <Navigate to='/profile' />;
+  if (!isLoggedIn) {
+    dispatch(login(user_name, password))
+      .then(() => {
+        props.history.push('/profile');
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }
   return (
     <>
@@ -57,7 +73,25 @@ const SignIn = (props) => {
           </Icon>
           <FormContent>
             <Form onSubmit={handleSubmit}>
-              <FormH1>Sign in to your account</FormH1>
+              <FormH1>Register your account</FormH1>
+              <FormLabel htmlFor='for'>Full Name</FormLabel>
+              <FormInput
+                type='text'
+                id='name'
+                name='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <FormLabel htmlFor='for'>Email</FormLabel>
+              <FormInput
+                type='email'
+                id='email'
+                name='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
               <FormLabel htmlFor='for'>Username</FormLabel>
               <FormInput
                 type='text'
@@ -76,8 +110,7 @@ const SignIn = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <FormButton type='submit'>Log In</FormButton>
-              <Text>Forgot Password</Text>
+              <FormButton type='submit'>Register</FormButton>
             </Form>
           </FormContent>
         </FormWrap>
@@ -86,4 +119,4 @@ const SignIn = (props) => {
   );
 };
 
-export default SignIn;
+export default Register;

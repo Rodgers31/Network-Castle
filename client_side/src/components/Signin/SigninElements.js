@@ -13,7 +13,7 @@ export const Container = styled.div`
   background: linear-gradient(
     135deg,
     hsla(240, 3%, 6%, 1) 19%,
-    hsla(181, 100%, 76%, 1) 90%
+    hsla(181, 100%, 76%, 1) 70%
   );
   margin-bottom: 5%;
 `;
@@ -35,6 +35,7 @@ export const Icon = styled(Link)`
   color: #fff;
   font-weight: 700;
   font-size: 32px;
+  width: 50%;
   @media screen and (max-width: 480px) {
     margin-left: 16px;
     margin-top: 8px;

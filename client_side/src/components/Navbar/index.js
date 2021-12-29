@@ -6,6 +6,7 @@ import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { logout } from '../../redux/actions/auth';
 import {
   Nav,
   NavbarContainer,
@@ -30,10 +31,6 @@ const Navbar = ({ toggle }) => {
     }
   };
 
-  const logOut = () => {
-    localStorage.removeItem('user');
-    return <Navigate to='/' />;
-  };
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
   }, []);
@@ -98,7 +95,7 @@ const Navbar = ({ toggle }) => {
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to='/login' onClick={logOut()}>
+              <NavBtnLink to='/login' onClick={logout()}>
                 {isLoggedIn ? 'Logout' : 'Login'}
               </NavBtnLink>
             </NavBtn>

@@ -16,7 +16,7 @@ async function insertUser(user) {
     'user_name',
     'name',
     'email',
-    'passowrd',
+    'password',
     'admin',
   ]);
   return newUserObject;

@@ -39,9 +39,10 @@ export const NavLogo = styled(LinkRouter)`
   font-weight: bold;
   text-decoration: none;
 
-  /* @media screen and (max-width: 768px) {
-    display: none;
-  } */
+  @media screen and (max-width: 768px) {
+    display: flex;
+    margin-left: -70px;
+  }
 `;
 
 export const MobileIcon = styled.div`
@@ -65,7 +66,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   text-align: center;
   margin-right: -22px;
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;

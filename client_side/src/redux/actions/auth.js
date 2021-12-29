@@ -9,41 +9,42 @@ import {
 
 import AuthService from '../../services/auth.service';
 
-export const register = (user_name, email, password, admin) => (dispatch) => {
-  return AuthService.register(user_name, email, password, admin).then(
-    (response) => {
-      dispatch({
-        type: REGISTER_SUCCESS,
-      });
+export const register =
+  (user_name, name, email, password, admin) => (dispatch) => {
+    return AuthService.register(user_name, name, email, password, admin).then(
+      (response) => {
+        dispatch({
+          type: REGISTER_SUCCESS,
+        });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: response.data.message,
-      });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: response.data.message,
+        });
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-      dispatch({
-        type: REGISTER_FAIL,
-      });
+        dispatch({
+          type: REGISTER_FAIL,
+        });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
 
-      return Promise.reject();
-    }
-  );
-};
+        return Promise.reject();
+      }
+    );
+  };
 
 export const login = (user_name, password) => (dispatch) => {
   return AuthService.login(user_name, password).then(
