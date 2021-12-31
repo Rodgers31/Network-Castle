@@ -31,8 +31,9 @@ const SignIn = (props) => {
     if (user_name && password) {
       dispatch(login(user_name, password))
         .then(() => {
-          props.history.push('/profile');
-          window.location.reload();
+          // props.history.push('/profile');
+          // window.location.reload();
+          setLoading(false);
         })
         .catch(() => {
           setLoading(false);

@@ -16,7 +16,7 @@ import {
   FormButton,
   Text,
 } from '../Signin/SigninElements.js';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = (props) => {
   const [user_name, setUsername] = useState('');
@@ -24,6 +24,7 @@ const Register = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
 
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -34,14 +35,7 @@ const Register = (props) => {
     if (user_name && password) {
       dispatch(register(user_name, name, email, password))
         .then(() => {
-          dispatch(login(user_name, password))
-            .then(() => {
-              props.history.push('/profile');
-              window.location.reload();
-            })
-            .catch(() => {
-              setLoading(false);
-            });
+          navigate('/login');
         })
         .catch(() => {
           setLoading(false);
@@ -50,16 +44,7 @@ const Register = (props) => {
       throw new Error('All fields must be entered');
     }
   };
-  if (!isLoggedIn) {
-    dispatch(login(user_name, password))
-      .then(() => {
-        props.history.push('/profile');
-        window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }
+
   return (
     <>
       <Container>
