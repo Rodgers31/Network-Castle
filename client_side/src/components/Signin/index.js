@@ -23,6 +23,7 @@ const SignIn = (props) => {
   const [loading, setLoading] = useState(false);
   const [people, setPeople] = useState([]);
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -57,6 +58,18 @@ const SignIn = (props) => {
             />
           </Icon>
           <FormContent>
+            {message && (
+              <div className='form-group'>
+                <div
+                  className={
+                    false ? 'alert alert-success' : 'alert alert-danger'
+                  }
+                  role='alert'
+                >
+                  {message}
+                </div>
+              </div>
+            )}
             <Form onSubmit={handleSubmit}>
               <FormH1>Sign in to your account</FormH1>
               <FormLabel htmlFor='for'>Username</FormLabel>

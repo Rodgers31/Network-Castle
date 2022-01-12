@@ -27,6 +27,7 @@ const Register = (props) => {
   let navigate = useNavigate();
 
   const { isLoggedIn } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
