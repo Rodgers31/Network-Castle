@@ -58,18 +58,6 @@ const SignIn = (props) => {
             />
           </Icon>
           <FormContent>
-            {message && (
-              <div className='form-group'>
-                <div
-                  className={
-                    false ? 'alert alert-success' : 'alert alert-danger'
-                  }
-                  role='alert'
-                >
-                  {message}
-                </div>
-              </div>
-            )}
             <Form onSubmit={handleSubmit}>
               <FormH1>Sign in to your account</FormH1>
               <FormLabel htmlFor='for'>Username</FormLabel>
