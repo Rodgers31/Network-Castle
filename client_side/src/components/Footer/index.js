@@ -16,6 +16,7 @@ import {
   SocialIcons,
   SocialIconLink,
 } from './FooterElemets';
+import Logoimg from '../../logoImg/Layers.png';
 
 const Footer = () => {
   const toggleHome = () => {
@@ -64,10 +65,19 @@ const Footer = () => {
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to='/' onClick={toggleHome}>
-              dolla
+              <img
+                src={Logoimg}
+                alt='Layers Network logo'
+                style={{
+                  marginTop: '30%',
+                  padding: '10px',
+                  height: '200px',
+                }}
+              />
             </SocialLogo>
             <WebsiteRights>
-              dolla &copy; {new Date().getFullYear()} All rights reserved.
+              Layers Network &copy; {new Date().getFullYear()} All rights
+              reserved.
             </WebsiteRights>
             <SocialIcons>
               <SocialIconLink href='/' target='_blank' aria-label='Instagram'>
