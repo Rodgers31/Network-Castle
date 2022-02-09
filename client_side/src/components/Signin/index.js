@@ -16,6 +16,7 @@ import {
   Text,
 } from './SigninElements';
 import { Navigate } from 'react-router-dom';
+import RenderMessage from '../Message';
 
 const SignIn = (props) => {
   const [user_name, setUsername] = useState('');
@@ -23,7 +24,7 @@ const SignIn = (props) => {
   const [loading, setLoading] = useState(false);
   const [people, setPeople] = useState([]);
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -57,6 +58,8 @@ const SignIn = (props) => {
               alt=''
             />
           </Icon>
+
+          <RenderMessage />
           <FormContent>
             <Form onSubmit={handleSubmit}>
               <FormH1>Sign in to your account</FormH1>
