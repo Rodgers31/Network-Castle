@@ -4,9 +4,9 @@ export const homeObjOne = {
   lightText: true,
   lightTextDesc: true,
   topLine: 'Layers Network',
-  headline: 'Ultimate customization for your website at a fixed cost',
+  headline: 'The ultimate customization for your website at a fixed cost',
   description:
-    'Register now and start your transformation jouney through the word the internet',
+    'Register now and say goodby to monthly fees, just pay one price and forget',
   buttonLable: 'Get started',
   imgStart: false,
   img: '/images/svg-1.svg',

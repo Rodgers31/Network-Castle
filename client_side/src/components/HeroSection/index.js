@@ -26,7 +26,7 @@ const HeroSection = () => {
         <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
       </Herobg>
       <HeroContent>
-        <HeroH1>Nativating you through all of your digital needs </HeroH1>
+        <HeroH1>Nativating you through all your digital needs </HeroH1>
         <HeroP>
           Layers Network will be your one-stop shop for all your digital needs,
           from website building and maintaining, to online business
